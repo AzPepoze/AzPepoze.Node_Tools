@@ -1,5 +1,5 @@
 {
-	"name": "az_node_tools",
+	"name": "azpepoze.node_tools",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
