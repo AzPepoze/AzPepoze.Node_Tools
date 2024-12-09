@@ -7,6 +7,8 @@ on:
 
 jobs:
      publish-gpr:
+          environment: NPM
+
           runs-on: ubuntu-latest
           permissions:
                contents: read
@@ -35,12 +37,9 @@ jobs:
                       NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
                # Publish to npm Registry
-               - name: Login to npm Registry
-                 run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
-
                - name: Publish to npm Registry
+                 env:
+                      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
                  run: |
                       npm config set registry https://registry.npmjs.org/
                       npm publish --access public
-                 env:
-                      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
