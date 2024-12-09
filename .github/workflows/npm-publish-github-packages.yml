@@ -1,43 +1,43 @@
 name: Node.js Package
 
 on:
-  push:
-    branches:
-      - main
+     push:
+          branches:
+               - main
 
 jobs:
-  publish-gpr:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+     publish-gpr:
+          runs-on: ubuntu-latest
+          permissions:
+               contents: read
+               packages: write
+          steps:
+               - name: Checkout repository
+                 uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          registry-url: https://npm.pkg.github.com/
-          scope: '@AzPepoze'
+               - name: Setup Node.js
+                 uses: actions/setup-node@v4
+                 with:
+                      node-version: 20
+                      registry-url: https://npm.pkg.github.com/
+                      scope: "@AzPepoze"
 
-      - name: Install pnpm
-        run: npm install -g pnpm
+               - name: Install pnpm
+                 run: npm install -g pnpm
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+               - name: Install dependencies
+                 run: pnpm install --frozen-lockfile
 
-       # Publish to GitHub Package Registry
-      - name: Publish to GitHub Package Registry
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                 # Publish to GitHub Package Registry
+               - name: Publish to GitHub Package Registry
+                 run: npm publish
+                 env:
+                      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Publish to npm Registry
-      - name: Publish to npm Registry
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          npm config set registry https://registry.npmjs.org/
-          npm publish --access public
+               # Publish to npm Registry
+               - name: Publish to npm Registry
+                 env:
+                      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+                 run: |
+                      npm config set registry https://registry.npmjs.org/
+                      npm publish --access public
