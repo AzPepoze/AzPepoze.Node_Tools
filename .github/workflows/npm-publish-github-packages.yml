@@ -33,7 +33,7 @@ jobs:
                  env:
                       NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                  run: |
-                      pnpm config set registry https://npm.pkg.github.com/@AzPepoze
+                      pnpm config set @AzPepoze:registry https://npm.pkg.github.com/
                       pnpm publish --no-git-checks --access public
 
                # Publish to npm Registry
