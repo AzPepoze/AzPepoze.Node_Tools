@@ -21,20 +21,13 @@ jobs:
                  uses: actions/setup-node@v4
                  with:
                       node-version: 20
-                      registry-url: https://npm.pkg.github.com/
-                      scope: "@AzPepoze"
+                      registry-url: https://registry.npmjs.org/
 
                - name: Install pnpm
                  run: npm install -g pnpm
 
                - name: Install dependencies
                  run: pnpm install --frozen-lockfile
-
-                 # Publish to GitHub Package Registry
-               - name: Publish to GitHub Package Registry
-                 run: npm publish
-                 env:
-                      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
                # Publish to npm Registry
                - name: Publish to npm Registry
