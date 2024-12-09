@@ -31,8 +31,6 @@ jobs:
 
                # Publish to npm Registry
                - name: Publish to npm Registry
-                 env:
-                      NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
                  run: |
-                      pnpm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
+                      echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
                       pnpm publish --access public
