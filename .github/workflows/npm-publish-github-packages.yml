@@ -32,7 +32,7 @@ jobs:
                # Publish to npm Registry
                - name: Publish to npm Registry
                  env:
-                      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+                      NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
                  run: |
-                      npm config set registry https://registry.npmjs.org/
-                      npm publish --access public
+                      pnpm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
+                      pnpm publish --access public
