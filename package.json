@@ -1,5 +1,5 @@
 {
-	"name": "@azpepoze/node_tools",
+	"name": "azpepoze.node_tools",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
@@ -14,6 +14,6 @@
 		"url": "https://github.com/AzPepoze/AzPepoze.Node_Tools"
 	},
 	"publishConfig": {
-		"registry": "https://npm.pkg.github.com/@AzPepoze"
+		"registry": "https://npm.pkg.github.com"
 	}
 }
