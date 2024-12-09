@@ -28,6 +28,12 @@ jobs:
                - name: Install dependencies
                  run: pnpm install --frozen-lockfile
 
+               # Publish package
+               - name: Publish package
+                 run: |
+                      pnpm config set @AzPepoze:registry https://npm.pkg.github.com/
+                      NODE_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }} pnpm publish --no-git-checks --access public
+
                # Publish to npm Registry
                - name: Publish to npm Registry
                  run: |
