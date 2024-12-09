@@ -31,8 +31,7 @@ jobs:
                # Publish github package
                - name: Publish github package
                  run: |
-                      pnpm config set registry https://npm.pkg.github.com/
-                      pnpm config set scope @AzPepoze
+                      pnpm config set '//npm.pkg.github.com/@AzPepoze/:_authToken' "${{secrets.NPM_TOKEN}}"
                       NODE_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }} pnpm publish --no-git-checks --access public
 
                # Publish to npm Registry
